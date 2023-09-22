@@ -27,7 +27,7 @@ public class TestController {
     @PostMapping("/doPost")
     public String doPost(@RequestBody String jsonStr) {
         log.info("请求参数合并：{}", jsonStr);
-        log.info("提交到github");
+        log.info("dev修改");
         Thread.sleep(50000);
         testService.test();
         Map<String, Object> map = new LinkedHashMap<>();
