@@ -31,7 +31,7 @@ public class TestController {
         testService.test();
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("name", "danier");
-        map.put("age", 18);
+        map.put("age", 19);
         map.put("birthday", "19921019");
         return mapper.writeValueAsString(map);
     }
