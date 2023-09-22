@@ -26,7 +26,7 @@ public class TestController {
     @SneakyThrows
     @PostMapping("/doPost")
     public String doPost(@RequestBody String jsonStr) {
-        log.info("请求参数：{}", jsonStr);
+        log.info("请求参数master：{}", jsonStr);
         Thread.sleep(50000);
         testService.test();
         Map<String, Object> map = new LinkedHashMap<>();
