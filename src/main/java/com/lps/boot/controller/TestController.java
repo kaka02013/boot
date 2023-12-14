@@ -1,6 +1,7 @@
 package com.lps.boot.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.benmanes.caffeine.cache.Cache;
 import com.lps.boot.reflect.ReflectBean;
 import com.lps.boot.reflect.ReflectHandler;
 import com.lps.boot.service.TestService;
@@ -27,6 +28,9 @@ public class TestController {
     @Resource
     ConfigurableApplicationContext context;
 
+    @Resource
+    private Cache<String, Object> caffeineCache;
+
     public TestController(TestService testService) {
         this.testService = testService;
     }
@@ -49,5 +53,10 @@ public class TestController {
     public String reflect() {
         String paramHelper = (String) ReflectHandler.invoke(new ReflectBean("batchCreateProcessServiceImpl", "execute"), new Object[]{""}, this.context);
         return "OK";
+    }
+
+    @GetMapping("/getCache")
+    public String getCache() {
+        return String.valueOf(caffeineCache.getIfPresent("param"));
     }
 }
